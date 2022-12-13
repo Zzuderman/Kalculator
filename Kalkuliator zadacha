@@ -1,0 +1,562 @@
+package katatest;
+
+
+import java.util.Scanner;
+
+
+public class Main {
+    public static boolean checkArCh(String str){
+        if (str.contains("+")){
+            int i = str.indexOf('+');
+            int i2 = str.lastIndexOf('+');
+            if (i!=i2){
+                return false;
+            }
+            if (str.contains("/") || str.contains("*") || str.contains("-")){
+                return false;
+            }
+
+        }
+        if (str.contains("-")){
+            int i = str.indexOf('-');
+            int i2 = str.lastIndexOf('-');
+            if (i!=i2){
+                return false;
+            }
+
+            if (str.contains("/") || str.contains("*") || str.contains("+")){
+                return false;
+            }
+
+        }
+        if (str.contains("/")){
+            int i = str.indexOf('/');
+            int i2 = str.lastIndexOf('/');
+            if (i!=i2){
+                return false;
+            }
+            if (str.contains("+") || str.contains("*") || str.contains("-")){
+                return false;
+            }
+
+        }
+
+        if (str.contains("*")){
+            int i = str.indexOf('*');
+            int i2 = str.lastIndexOf('*');
+            if (i!=i2){
+                return false;
+            }
+
+            if (str.contains("/") || str.contains("+") || str.contains("-")){
+                return false;
+            }
+        }
+
+
+        return true;
+
+    }
+
+    public  static String myCalc(String str) throws Exception, ArithmeticException {
+
+        if (!checkArCh(str)){
+            throw new Exception();
+        }
+
+        String[] operations = {"+", "-", "/", "*"};// массив с используемыми знаками действия
+        String[] regOperations = {"\\+", "-", "/", "\\*"};// массив с экранированными знаками, чтобы с их помощью делить вводимое варажение на части с помощью "split"
+        int operationIndex = -1;
+        for (int i = 0; i < operations.length; i++) {
+            if (str.contains(operations[i])) {
+                operationIndex = i;
+                break;
+            }
+        }
+        //если операция введена не корректно, выводим сообщение об ошибке
+        if (operationIndex == -1) {
+            System.out.println("Не корректное выражение");
+        }
+        String[] data = str.split(regOperations[operationIndex]);
+        String s;
+        String y;
+        s=(data[0]);
+        y=(data[1]);
+        String operation = operations[operationIndex];
+
+        int s1=s.hashCode();
+        int y1=y.hashCode();
+
+        raznueSistemi(s1,y1);
+
+
+
+        if ((s1<58||s1==1567)&&(y1<58||y1==1567)) {
+            int a;
+            int b;
+            a = Integer.parseInt(data[0]);
+            b = Integer.parseInt(data[1]);
+
+
+            int result;
+            switch (operations[operationIndex]) {
+                case "+":
+                    result = a + b;
+                    break;
+                case "-":
+                    result = a - b;
+                    break;
+                case "*":
+                    result = a * b;
+                    break;
+                default:
+                    result = a / b;
+                    break;
+
+            }
+
+            return String.valueOf(result);
+        }else{
+            if((s1==73||s1==2336||s1==72489||s1==2346||s1==86||s1==2739||s1==84982||s1==2634515||s1==2351||s1==88)&&(y1==73||y1==2336||y1==72489||y1==2346||y1==86||y1==2739||y1==84982||y1==2634515||y1==2351||y1==88)){
+                int x = 0;
+                switch (s) {
+                    case "I":
+                        x = 1;
+                        break;
+                    case "II":
+                        x = 2;
+                        break;
+                    case "III":
+                        x = 3;
+                        break;
+                    case "IV":
+                        x = 4;
+                        break;
+                    case "V":
+                        x = 5;
+                        break;
+                    case "VI":
+                        x = 6;
+                        break;
+                    case "VII":
+                        x = 7;
+                        break;
+                    case "VIII":
+                        x = 8;
+                        break;
+                    case "IX":
+                        x = 9;
+                        break;
+                    case "X":
+                        x = 10;
+                        break;
+
+                }
+
+                int w = 0;
+                switch (y) {
+                    case "I":
+                        w = 1;
+                        break;
+                    case "II":
+                        w = 2;
+                        break;
+                    case "III":
+                        w = 3;
+                        break;
+                    case "IV":
+                        w = 4;
+                        break;
+                    case "V":
+                        w = 5;
+                        break;
+                    case "VI":
+                        w = 6;
+                        break;
+                    case "VII":
+                        w = 7;
+                        break;
+                    case "VIII":
+                        w = 8;
+                        break;
+                    case "IX":
+                        w = 9;
+                        break;
+                    case "X":
+                        w = 10;
+                        break;
+
+                }
+
+                int result;
+                switch (operations[operationIndex]) {
+                    case "+":
+                        result = x + w;
+                        break;
+                    case "-":
+                        result = x - w;
+                        break;
+                    case "*":
+                        result = x * w;
+                        break;
+                    default:
+                        result = x / w;
+                        break;
+
+                }
+                otricatelnieRoma(result);
+                String r="I";
+                switch (result){
+                    case 1:
+                        r="I";
+                        break;
+                    case 2:
+                        r="II";
+                        break;
+                    case 3:
+                        r="III";
+                        break;
+                    case 4:
+                        r="IV";
+                        break;
+                    case 5:
+                        r="V";
+                        break;
+                    case 6:
+                        r="VI";
+                        break;
+                    case 7:
+                        r="VII";
+                        break;
+                    case 8:
+                        r="VIII";
+                        break;
+                    case 9:
+                        r="IX";
+                        break;
+                    case 10:
+                        r="X";
+                        break;
+                    case 11:
+                        r="XI";
+                        break;
+                    case 12:
+                        r="XII";
+                        break;
+                    case 13:
+                        r="XIII";
+                        break;
+                    case 14:
+                        r="XIV";
+                        break;
+                    case 15:
+                        r="XV";
+                        break;
+                    case 16:
+                        r="XVI";
+                        break;
+                    case 17:
+                        r="XVII";
+                        break;
+                    case 18:
+                        r="XVIII";
+                        break;
+                    case 19:
+                        r="XIX";
+                        break;
+                    case 20:
+                        r="XX";
+                        break;
+                    case 21:
+                        r="XXI";
+                        break;
+                    case 22:
+                        r="XXII";
+                        break;
+                    case 23:
+                        r="XXIII";
+                        break;
+                    case 24:
+                        r="XXIV";
+                        break;
+                    case 25:
+                        r="XXV";
+                        break;
+                    case 26:
+                        r="XXVI";
+                        break;
+                    case 27:
+                        r="XXVII";
+                        break;
+                    case 28:
+                        r="XXVIII";
+                        break;
+                    case 29:
+                        r="XXIX";
+                        break;
+                    case 30:
+                        r="XXX";
+                        break;
+                    case 31:
+                        r="XXXI";
+                        break;
+                    case 32:
+                        r="XXXII";
+                        break;
+                    case 33:
+                        r="XXXIII";
+                        break;
+                    case 34:
+                        r="XXXIV";
+                        break;
+                    case 35:
+                        r="XXXV";
+                        break;
+                    case 36:
+                        r="XXXVI";
+                        break;
+                    case 37:
+                        r="XXXVII";
+                        break;
+                    case 38:
+                        r="XXXVIII";
+                        break;
+                    case 39:
+                        r="XXXIX";
+                        break;
+                    case 40:
+                        r="XL";
+                        break;
+                    case 41:
+                        r="XLI";
+                        break;
+                    case 42:
+                        r="XLII";
+                        break;
+                    case 43:
+                        r="XLIII";
+                        break;
+                    case 44:
+                        r="XLIV";
+                        break;
+                    case 45:
+                        r="XLV";
+                        break;
+                    case 46:
+                        r="XLVI";
+                        break;
+                    case 47:
+                        r="XLVII";
+                        break;
+                    case 48:
+                        r="XLVIII";
+                        break;
+                    case 49:
+                        r="XLIX";
+                        break;
+                    case 50:
+                        r="L";
+                        break;
+                    case 51:
+                        r="LI";
+                        break;
+                    case 52:
+                        r="LII";
+                        break;
+                    case 53:
+                        r="LIII";
+                        break;
+                    case 54:
+                        r="LIV";
+                        break;
+                    case 55:
+                        r="LV";
+                        break;
+                    case 56:
+                        r="LVI";
+                        break;
+                    case 57:
+                        r="LVII";
+                        break;
+                    case 58:
+                        r="LVIII";
+                        break;
+                    case 59:
+                        r="LIX";
+                        break;
+                    case 60:
+                        r="LX";
+                        break;
+                    case 61:
+                        r="LXI";
+                        break;
+                    case 62:
+                        r="LXII";
+                        break;
+                    case 63:
+                        r="LXIII";
+                        break;
+                    case 64:
+                        r="LXIV";
+                        break;
+                    case 65:
+                        r="LXV";
+                        break;
+                    case 66:
+                        r="LXVI";
+                        break;
+                    case 67:
+                        r="LXVII";
+                        break;
+                    case 68:
+                        r="LXVIII";
+                        break;
+                    case 69:
+                        r="LXIX";
+                        break;
+                    case 70:
+                        r="LXX";
+                        break;
+                    case 71:
+                        r="LXXI";
+                        break;
+                    case 72:
+                        r="LXXII";
+                        break;
+                    case 73:
+                        r="LXXIII";
+                        break;
+                    case 74:
+                        r="LXXIV";
+                        break;
+                    case 75:
+                        r="LXXV";
+                        break;
+                    case 76:
+                        r="LXXVI";
+                        break;
+                    case 77:
+                        r="LXXVII";
+                        break;
+                    case 78:
+                        r="LXXVIII";
+                        break;
+                    case 79:
+                        r="LXXIX";
+                        break;
+                    case 80:
+                        r="LXXX";
+                        break;
+                    case 81:
+                        r="LXXXI";
+                        break;
+                    case 82:
+                        r="LXXXII";
+                        break;
+                    case 83:
+                        r="LXXXIII";
+                        break;
+                    case 84:
+                        r="LXXXIV";
+                        break;
+                    case 85:
+                        r="LXXXV";
+                        break;
+                    case 86:
+                        r="LXXXVI";
+                        break;
+                    case 87:
+                        r="LXXXVII";
+                        break;
+                    case 88:
+                        r="LXXXVIII";
+                        break;
+                    case 89:
+                        r="LXXXIX";
+                        break;
+                    case 90:
+                        r="XC";
+                        break;
+                    case 91:
+                        r="XCI";
+                        break;
+                    case 92:
+                        r="XCII";
+                        break;
+                    case 93:
+                        r="XCIII";
+                        break;
+                    case 94:
+                        r="XCIV";
+                        break;
+                    case 95:
+                        r="XCV";
+                        break;
+                    case 96:
+                        r="XCVI";
+                        break;
+                    case 97:
+                        r="XCVII";
+                        break;
+                    case 98:
+                        r="XCVIII";
+                        break;
+                    case 99:
+                        r="XCIX";
+                        break;
+                    case 100:
+                        r="C";
+                        break;
+                    default:
+                        System.out.println("в римской системе нет отрицательных чисел");
+                        break;
+
+
+                }
+
+                return r;
+
+
+            }else {
+                throw new ArithmeticException("Нужно ввести числа от 1 до 10");
+            }
+        }
+    }
+
+
+
+
+
+
+    public static void main(String[] args) throws Exception {
+
+            Scanner primer = new Scanner(System.in);
+            System.out.println("Вводим выражение");
+            String input = primer.nextLine();
+            // теперь нужно определить какой знак был использован
+
+        System.out.println("Результат вычеслений равен: "+myCalc(input));
+
+
+    }
+
+    public static void span(int x, int y) throws ArithmeticException{
+        if (x<1||x>10||y<1||y>10){
+            throw new ArithmeticException("Нужно ввести числа от 1 до 10");
+        }
+    }
+
+    public static void otricatelnieRoma(int x) throws Exception{
+        if (x<1){
+            throw new Exception("Среди римских чисел нет отрицательных");
+        }
+    }
+    public static void raznueSistemi(int x,int y) throws Exception{
+         if ((x<58||x==1567)&&(y==73||y==2336||y==72489||y==2346||y==86||y==2739||y==84982||y==2634515||y==2351||y==88)||(x==73||x==2336||x==72489||x==2346||x==86||x==2739||x==84982||x==2634515||x==2351||x==88)&&(y<58||y==1567)){
+            throw new Exception("Используются сразу разные системы исчисления");
+        }
+    }
+
+
+
+}
